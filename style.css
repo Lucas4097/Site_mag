@@ -1,97 +1,334 @@
+html{
+    scroll-behavior: smooth;
+    scroll-snap-type: y proximity;
+    scroll-padding-top: 150px;
+}
+
 body{
     margin: 0;
+    /* margin: 175px 0; */
     padding: 0;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     /* background-image: repeating-linear-gradient(#36173d,#ff4845, #ff745f); */
-    background-color: #ff4845;
+    /* background-color: #f1bbbb;*/
+    background-color: #36173d;
+    color: white;
+}
+
+#home, #about, #contact, #products{
+    scroll-snap-align: start;
 }
 
 header{
-    padding: 10px 150px;
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 70px;
-    background-color: #fff;
+    /* background-color: #36173d; */
+    position: fixed;
+    width: 100%;
+    top: 0;
+    border-bottom: solid 2px black;
+    background: linear-gradient(to bottom, #36173d, black);
+    z-index: 1000;
 }
 
-header ul{
+.nav{
+    margin: 0 150px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo{
+    display: flex;
+    cursor: pointer;
+}
+
+.logo:hover{
+    transform: rotate(360deg);
+    transition: 1.5s linear;
+}
+
+.navbar{
     display: flex;
     list-style: none;
     justify-content: space-evenly;
 }
 
-header ul li{
+.navbar li{
     margin: 15px;
 }
 
-header ul li a{
+.navbar li a{
     text-decoration: none;
-    color: black;
+    color: white;
     padding: 10px;
 }
 
-header ul li a:hover{
-    color: blue;
-}
-
-main{
-    margin: 25px 150px;
-}
-
-.destaque{
-    margin: 40px 0;
-    height: 450px;
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 100px;
-    background-color: #fff;
-    border: solid 2px #ffc55f;
-    border-radius: 20px;
-    overflow: hidden;
-}
-
-.esquerda{
-    width: 40%;
-    margin: 20px;
-}
-
-.esquerda button{
-    background-color: white;
-    padding: 15px 30px;
-    border-radius: 20px;
-    border: 2px solid rgb(0, 115, 255);
-}
-
-.esquerda button:hover{
-    background-color: rgb(0, 115, 255);
-    color: white;
+.navbar li a:hover{
+    color: #ffc55f;
+    border-bottom: solid 1px #ffec5e;
+    padding-bottom: 5px;
+    margin-bottom: 1px;
     transition: 0.2s linear;
 }
 
-.direita{
+main{
+    margin: 150px 150px 25px 150px;
+}
+
+.home{
+    margin: 30px 0;
+    height: 470px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 100px;
+    color: white;
+    background-color: #9a5071;
+    overflow: hidden;
+    border: solid 1px white;
+    border-radius: 70px;
+}
+
+.d-flex{
+    display: flex;
+}
+
+.home-left{
+    width: 50%;
+    margin: 20px;
+    font-size: 1.5rem;
+}
+
+.button{
+    background-color: #ffc55f;
+    padding: 12px;
+    border: 2px solid #2f3559;
+    color: white;
+    font-size: 16px;
+    transition: 0.4s linear;
+}
+
+.button:hover{
+    padding: 12px 70px;
+}
+
+.home-right{
     width: 50%;
 }
 
-.produtos{
+.products{
     margin-bottom: 100px;
-    background-color: #fff;
-    padding: 5px;
-    border: solid 2px #ffc55f;
-    border-radius: 20px;
+}
+
+.products h1{
+    text-align: center;
+    font-size: 2rem;
+}
+
+.products-img{
+    width: 250px;
+}
+
+.products-menu{
+    width: 100%;
+    display: flex;
+    flex-flow: wrap;
+    justify-content: center;
+}
+
+.products-menu-item{
+    border: 1px solid white;
+    padding: 10px;
+    text-align: center;
+}
+
+.about{
+    margin: 100px 0;
+    width: 100%;
+    display: flex;
+    background-color: #9a5071;
+    overflow: hidden;
+    border: solid 1px white;
+    border-radius: 70px;
+}
+
+.about-left{
+    width: 50%;
+    padding: 20px;
+}
+
+.about-left h2{
+    font-size: 2rem;
+}
+
+.about-right{
+    width: 50%;
+}
+
+.carousel{
+    width: 100%;
+    height: 480px;
     overflow: hidden;
 }
 
-.produtos h2{
-    text-align: center;
+.slides{
+    width: 400%;
+    height: 480px;
+    display: flex;
 }
 
-.card-produtos{
-    margin: 0 10px;
+.slides input{
+    display: none;
 }
 
-.onde{
-    text-align: center;
+.slide{
+    width: 25%;
+    position: relative;
+    transition: 1.5s;
 }
+
+.slide img{
+    width: 100%;
+    height: 480px;
+}
+
+.manual-navigation{
+    position: absolute;
+    margin-top: -40px;
+    display: flex;
+    justify-content: center;
+    width: 40%;
+}
+
+.manual-btn{
+    border: 2px solid white;
+    padding: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 1s;
+}
+
+.manual-btn:hover{
+    background-color: white;
+}
+
+.manual-btn:not(:last-child){
+    margin-right: 40px;
+}
+
+#radio1:checked ~ .first{
+    margin-left: 0;
+}
+
+#radio2:checked ~ .first{
+    margin-left: -25%;
+}
+
+#radio3:checked ~ .first{
+    margin-left: -50%;
+}
+
+.navigation-auto div{
+    border: solid 2px #20a6ff;
+    padding: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 1s;
+}
+
+.navigation-auto{
+    position: absolute;
+    width: 40%;
+    margin-top: 440px;
+    display: flex;
+    justify-content: center;
+}
+
+.navigation-auto div:not(:last-child){
+    margin-right: 40px;
+}
+
+#radio1:checked ~ .navigation-auto .auto-btn1{
+    background-color: #fff;
+}
+
+#radio2:checked ~ .navigation-auto .auto-btn2{
+    background-color: #fff;
+}
+
+#radio3:checked ~ .navigation-auto .auto-btn3{
+    background-color: #fff;
+}
+
+.contact{
+    margin-bottom: 100px;
+}
+
+.contact h1{
+    text-align: center;
+    font-size: 2rem;
+}
+
+.contact-main{
+    display: flex;
+    background-color: #9a5071;
+    border: solid 1px white;
+    height: 425px;
+}
+
+.contact-left{
+    width: 60%;
+}
+
+.contact-right{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contact-right ul{
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+}
+
+.contact-right li{
+    display: flex;
+    margin: 10px;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contact-right li a{
+}
+
+.contact-right span{
+    font-size: 17px;
+}
+
+.contact-right i{
+    padding: 7px;
+    border: solid 1px #fff;
+    border-radius: 100%;
+    color: white;
+    font-size: 40px;
+    transition: 0.2s;
+}
+
+.contact-right i:hover{
+    background-color: black;
+    font-size: 50px;
+}
+
+footer{
+    background-color: black;
+    height: 300px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+
 
 .text-yellow{
     color: #ffec5e;
